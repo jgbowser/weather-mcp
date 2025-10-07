@@ -2,7 +2,6 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 
-import packageJson from "../package.json" with { type: "json" };
 import { makeNWSRequest, formatAlert } from "./helpers.js";
 import type {
   AlertsResponse,
@@ -10,13 +9,12 @@ import type {
   ForecastResponse,
   ForecastPeriod,
 } from "./types.js";
-const { version } = packageJson as { version: string };
 
 const NWS_API_BASE = "https://api.weather.gov";
 // Create erver instance
 const server = new McpServer({
   name: "weather-mcp",
-  version,
+  version: "1.0.0",
   capabilities: {
     resources: {},
     tools: {},
